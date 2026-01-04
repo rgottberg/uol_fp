@@ -1,0 +1,12 @@
+#virtual environment
+/venv
+
+#cache
+/__pycache__
+/modules/__pycache__
+
+#checkpoints
+/hf_mms-tts-eng
+
+#data
+/data
