@@ -12,7 +12,6 @@ import torchaudio
 import torch
 
 def hfWhisper(file_path):
-    # checkpoint = "openai/whisper-tiny"
     checkpoint = "openai/whisper-medium"
     
     processor = WhisperProcessor.from_pretrained(checkpoint)

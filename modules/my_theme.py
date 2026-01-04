@@ -16,6 +16,5 @@ my_theme = (
     )
 
 # create css file
-# with open(Path(__file__).parents[1] / "my_theme.css", "w") as f:
 with open(Path(__file__).parent / "my_theme.css", "w") as f:
     f.write(my_theme.to_css())

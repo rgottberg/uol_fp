@@ -17,33 +17,27 @@ app_ui = ui.page_fluid(
     ui.navset_card_pill(
         ui.nav_panel(
             "Prototype",
-            ui.layout_column_wrap(
+            ui.card(
                 ui.card(
-                    ui.card_header(ui.h3("Project scope & workflow")),
-                    ui.output_image("image1"),
+                    ui.card_header(ui.h4("1. automatic speech recognition")),
+                    ui.input_file("input_file", 
+                                  "Select a file"),
+                    ui.output_text("txt_out_1")
                     ),
                 ui.card(
-                    ui.card(
-                        ui.card_header(ui.h4("1. automatic speech recognition")),
-                        ui.input_file("input_file", 
-                                      "Select a file"),
-                        ui.output_text("txt_out_1")
-                        ),
-                    ui.card(
-                        ui.card_header(ui.h4("2. text generation")),
-                        ui.input_text(
-                            "txt_in", 
-                            "Your story is about ...",
-                            "",
-                            update_on = "blur"),
-                        ui.output_text("txt_out_2")
-                        ),
-                    ui.card(
-                        ui.card_header(ui.h4("3. speech synthesis")),
-                        ui.input_task_button("audio",
-                                             "Generate audio",
-                                             label_busy='Generating...')
-                        ),
+                    ui.card_header(ui.h4("2. text generation")),
+                    ui.input_text(
+                        "txt_in", 
+                        "Your story is about ...",
+                        "",
+                        update_on = "blur"),
+                    ui.output_text("txt_out_2")
+                    ),
+                ui.card(
+                    ui.card_header(ui.h4("3. speech synthesis")),
+                    ui.input_task_button("audio",
+                                         "Generate audio",
+                                         label_busy='Generating...')
                     ),
                 ),
             ),
@@ -54,11 +48,6 @@ app_ui = ui.page_fluid(
 # Server
 def server(input, output, session):
         
-    @render.image  
-    def image1():
-        img = {"src": "./images/20251103_workflow.png", "width": "100%"}  
-        return img
-
     @reactive.calc
     def transcription():
         file = input.input_file()
@@ -72,11 +61,10 @@ def server(input, output, session):
 
     @reactive.calc
     def generate_text():
-        checkpoint = "gemma3:1b" #chosen model
-        # checkpoint = "granite3.1-moe:3b" #chosen model
+        checkpoint = "gemma3:1b"
         story = ""
         if input.txt_in():
-            story,response = ollama_story.ollamaStory(checkpoint,input.txt_in())
+            story = ollama_story.ollamaStory(checkpoint,input.txt_in())
         return story
    
     @render.text

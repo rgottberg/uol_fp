@@ -6,18 +6,9 @@ Created on Fri Dec 12 22:13:34 2025
 @author: cod
 """
 
-# https://huggingface.co/facebook/mms-tts-eng
-
 # import libraries
 from transformers import VitsModel, AutoTokenizer
 import torch
-
-# checkpoint = "facebook/mms-tts-eng"
-# checkpoint_dir = "../hf_mms-tts-eng/"
-# model = VitsModel.from_pretrained(checkpoint)
-# model.save_pretrained(checkpoint_dir)
-# tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-# tokenizer.save_pretrained(checkpoint_dir)
 
 def hfMMS(story):
     checkpoint_dir = "./hf_mms-tts-eng/"
