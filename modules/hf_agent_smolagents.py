@@ -56,37 +56,46 @@ model_story_agent = LiteLLMModel(
 create_story_agent = CodeAgent(
     tools=[],
     model=model_story_agent,
-    instructions = """Create a story for children based on user prompt and 
-                      ensure that:
-                          - maximum length of the story is 200 words,
-                          - wording of the story is simple.""",
+    # instructions = """Create a story for children based on user prompt and 
+    #                   ensure that:
+    #                   - maximum length of the story is 200 words,
+    #                   - wording of the story is simple.""",
+    instructions = """You are an agent that creates stories for children based 
+                      on user prompts. Ensure that each story has a maximum 
+                      length of 200 words and simple wording""",
     max_steps=3,
     name="create_story_agent",
-    description="""This agent helps you to create stories for children based on
-                   user promtps.""")
+    description="This agent helps you to create stories.")
 
-search_agent = CodeAgent(
+web_search_agent = CodeAgent(
     tools=[DuckDuckGoSearchTool()],
     model=model_agent,
     max_steps=3,
-    name="search_agent",
-    description="this agent helps you to run web searches.")
+    name="web_search_agent",
+    description="This agent helps you to run web searches.")
     
 manager_agent = CodeAgent(
     tools=[],
     model=model_agent,
-    max_steps=3,
-    # managed_agents=[search_agent,create_story_agent]
-    managed_agents=[create_story_agent]
+    instructions = """You are a manager agent. 
+                      Do not provide feedback without first calling managed 
+                      agents: you must delegate all tasks to managed agents. 
+                      Pass user prompts to managed agents without adjustments 
+                      and/or changes.
+                      Managed agents should follow their own instructions 
+                      when running.""",
+    max_steps=1,
+    managed_agents=[create_story_agent,web_search_agent]
+    # managed_agents=[create_story_agent]
 )
 
 # manager_agent.visualize()
 
 ###############################################################################
 
-# user_prompt = "web search for current weather in Luxembourg."
-# user_prompt = "Recommend 10 categories of children's stories"
-user_prompt = "Create a story about an elephant and a princess"
+# user_prompt = "Recommend 10 categories of children's stories based on web search"
+user_prompt = "I want to hear a story as described in number 7 of your web search"
+# user_prompt = "Create a story about an elephant and a princess"
 
 result = manager_agent.run(user_prompt)    
 print("|---------------------------|\n\n"+result)
