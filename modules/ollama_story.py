@@ -12,16 +12,19 @@ from ollama import chat
 from ollama import ChatResponse
 
 @tool
-def createStory(user_prompt: str) -> str:
+def create_story(user_prompt: str) -> str:
     """
-    This is a tool that creates and returns stories for children based on user 
-    prompts. This tool must receive exactly 1 argument, which is the user prompt. 
-    This tool returns a newly-created story.
+    This is a tool that creates and returns stories for children. This tool 
+    must receive exactly 1 argument, which is the user prompt.
+    It returns a newly-created story.
 
     Args:
         user_prompt: information provided by users to create a story.
     """
-    response: ChatResponse = chat(model="gemma3:1b",
+    
+    checkpoint = "gemma3:1b"
+    
+    response: ChatResponse = chat(model=checkpoint,
                                   messages=[
                                       {
                                           'role': 'system',

@@ -13,11 +13,11 @@ import torchaudio
 import torch
 
 @tool
-def speechTranscription(file_path: str) -> str:
+def transcribe_speech(file_path: str) -> str:
     """
-    This is a tool that converts speech to text. This tool must receive 
+    This is a tool that converts speech into text. This tool must receive 
     exactly 1 argument, which is the path to the file containing the speech. 
-    This tool returns a speech transcription.
+    It returns a speech transcription.
 
     Args:
         file_path: path to the file containing the speech.
