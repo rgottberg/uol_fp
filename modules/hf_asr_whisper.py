@@ -7,11 +7,21 @@ Created on Sat Dec 13 17:52:36 2025
 """
 
 # import libraries
+from smolagents import tool
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
 import torchaudio
 import torch
 
-def hfWhisper(file_path):
+@tool
+def speechTranscription(file_path: str) -> str:
+    """
+    This is a tool that converts speech to text. This tool must receive 
+    exactly 1 argument, which is the path to the file containing the speech. 
+    This tool returns a speech transcription.
+
+    Args:
+        file_path: path to the file containing the speech.
+    """
     checkpoint = "openai/whisper-medium"
     
     processor = WhisperProcessor.from_pretrained(checkpoint)
