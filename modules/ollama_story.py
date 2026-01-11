@@ -7,11 +7,24 @@ Created on Wed Dec 10 09:50:03 2025
 """
 
 # import libraries
+from smolagents import tool
 from ollama import chat
 from ollama import ChatResponse
 
-def ollamaStory(checkpoint,user_prompt):
-    response: ChatResponse = chat(model=checkpoint, 
+@tool
+def create_story(user_prompt: str) -> str:
+    """
+    This is a tool that creates and returns stories for children. This tool 
+    must receive exactly 1 argument, which is the user prompt.
+    It returns a newly-created story.
+
+    Args:
+        user_prompt: information provided by users to create a story.
+    """
+    
+    checkpoint = "gemma3:1b"
+    
+    response: ChatResponse = chat(model=checkpoint,
                                   messages=[
                                       {
                                           'role': 'system',
