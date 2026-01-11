@@ -8,9 +8,16 @@ Created on Tue Dec  2 09:43:12 2025
 
 # import libraries
 from shiny import App, render, ui,reactive
-from modules import ollama_story, hf_tts_mms,hf_asr_whisper 
 from pathlib import Path
-import torchaudio
+
+import sys
+sys.path.insert(0, "./modules")
+
+from smolagents import CodeAgent, LiteLLMModel
+from hf_asr_whisper import transcribe_speech
+from ollama_story import create_story
+from hf_tts_mms import create_audio
+
 
 # UI
 app_ui = ui.page_fluid(
@@ -18,27 +25,10 @@ app_ui = ui.page_fluid(
         ui.nav_panel(
             "Prototype",
             ui.card(
-                ui.card(
-                    ui.card_header(ui.h4("1. automatic speech recognition")),
-                    ui.input_file("input_file", 
-                                  "Select a file"),
-                    ui.output_text("txt_out_1")
-                    ),
-                ui.card(
-                    ui.card_header(ui.h4("2. text generation")),
-                    ui.input_text(
-                        "txt_in", 
-                        "Your story is about ...",
-                        "",
-                        update_on = "blur"),
-                    ui.output_text("txt_out_2")
-                    ),
-                ui.card(
-                    ui.card_header(ui.h4("3. speech synthesis")),
-                    ui.input_task_button("audio",
-                                         "Generate audio",
-                                         label_busy='Generating...')
-                    ),
+                ui.card_header(ui.h4("Generate your own story")),
+                ui.input_task_button("story",
+                                     "Generate",
+                                     label_busy='Generating ...')
                 ),
             ),
         ),
@@ -47,41 +37,30 @@ app_ui = ui.page_fluid(
 
 # Server
 def server(input, output, session):
-        
-    @reactive.calc
-    def transcription():
-        file = input.input_file()
-        if file:
-            user_request = hf_asr_whisper.hfWhisper(file[0]["datapath"])
-            return user_request
-
-    @render.text
-    def txt_out_1():
-        return transcription() 
-
-    @reactive.calc
-    def generate_text():
-        checkpoint = "gemma3:1b"
-        story = ""
-        if input.txt_in():
-            story = ollama_story.ollamaStory(checkpoint,input.txt_in())
-        return story
-   
-    @render.text
-    def txt_out_2():
-        return generate_text()
     
+    model = LiteLLMModel(
+        model_id="ollama_chat/qwen2.5-coder:3b",
+        api_base="http://localhost:11434",
+        )
+       
+    agent = CodeAgent(
+        tools=[transcribe_speech,create_story,create_audio],
+        model=model,
+        max_steps=3
+    )
+
+    prompt = """ Create an audio story for children based on the user prompt 
+                 contained in the audio file stored at the following path 
+                 ./data/input_asr/3_audio_man.wav"""
+                         
     @reactive.calc
-    def generate_audio():
-        story = generate_text()
-        output,sampling_rate = hf_tts_mms.hfMMS(story)
-        torchaudio.save("./story_audio.wav", output.squeeze(0), sampling_rate)
+    def generate_story():
+        agent.run(prompt)
         
     @reactive.effect
-    @reactive.event(input.audio)
-    def download_audio():
-        if input.txt_in():
-            generate_audio()
+    @reactive.event(input.story)
+    def download_story():
+        generate_story()
 
 # Shiny app
 app = App(app_ui, server)

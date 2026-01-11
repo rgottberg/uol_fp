@@ -22,7 +22,7 @@ def create_audio(story: str) -> str:
     Args:
         story: text of the story to be converted into speech.
     """
-    checkpoint_dir = "../hf_mms-tts-eng/"
+    checkpoint_dir = "./hf_mms-tts-eng/"
     model = VitsModel.from_pretrained(checkpoint_dir)
     tokenizer = AutoTokenizer.from_pretrained(checkpoint_dir)
         
@@ -31,6 +31,6 @@ def create_audio(story: str) -> str:
     with torch.no_grad():
         output = model(**inputs).waveform
 
-    torchaudio.save("../story_audio.wav", output.squeeze(0), model.config.sampling_rate)
+    torchaudio.save("./story_audio.wav", output.squeeze(0), model.config.sampling_rate)
     
     return "ok"
