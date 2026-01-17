@@ -31,10 +31,13 @@ def transcribe_speech(file_path: str) -> str:
     
     waveform, sample_rate = torchaudio.load(file_path)
     
-    input_features = processor(waveform.squeeze().numpy(), sampling_rate=16000, return_tensors="pt").input_features
+    input_features = processor(waveform.squeeze().numpy(), 
+                               sampling_rate=16000, 
+                               return_tensors="pt").input_features
     
     with torch.no_grad():
         predicted_ids = model.generate(input_features)
-        transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)
+        transcription = processor.batch_decode(predicted_ids, 
+                                               skip_special_tokens=True)
     
     return transcription[0]

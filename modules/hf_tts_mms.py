@@ -31,6 +31,8 @@ def create_audio(story: str) -> str:
     with torch.no_grad():
         output = model(**inputs).waveform
 
-    torchaudio.save("./story_audio.wav", output.squeeze(0), model.config.sampling_rate)
+    torchaudio.save("./story_audio.wav", 
+                    output.squeeze(0), 
+                    model.config.sampling_rate)
     
     return "ok"
