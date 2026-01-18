@@ -17,7 +17,7 @@ def create_audio(story: str) -> str:
     """
     This is a tool that converts text into speech. This tool must receive 
     exactly 1 argument, which is the text of the story. 
-    It returns a speech transcription.
+    It returns an audio file labelled "story_audio.wav".
 
     Args:
         story: text of the story to be converted into speech.
@@ -35,4 +35,4 @@ def create_audio(story: str) -> str:
                     output.squeeze(0), 
                     model.config.sampling_rate)
     
-    return "ok"
+    return "story_audio.wav"

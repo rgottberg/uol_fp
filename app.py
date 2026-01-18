@@ -50,8 +50,8 @@ def server(input, output, session):
     )
 
     prompt = """ Create an audio story for children based on the user prompt 
-                 contained in the audio file stored at the following path 
-                 ./data/input_asr/3_audio_man.wav"""
+                 contained in the audio file stored at the following path: 
+                 ./3_audio_man.wav"""
                          
     @reactive.calc
     def generate_story():
