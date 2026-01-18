@@ -2,11 +2,9 @@
 /venv
 
 #cache
-/__pycache__
-/modules/__pycache__
+/djangoProject/finalProject/__pycache__
+/djangoProject/storyApp/migrations/__pycache__
+/djangoProject/storyApp/__pycache__
 
 #checkpoints
-/hf_mms-tts-eng
-
-#data
-/data
+/djangoProject/hf_mms-tts-eng
