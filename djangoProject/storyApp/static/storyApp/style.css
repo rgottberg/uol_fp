@@ -1,0 +1,47 @@
+/*
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jan 20 09:31:05 2026
+
+@author: cod
+"""
+*/
+
+section{
+    border-style: ridge;
+    border-width: 0.1em;
+    border-radius: 10px;
+}
+
+/*Grid ----------------------------------------------------------------------*/
+/*mapping-------------------------------------*/    
+section{grid-area: system;}
+
+/*Mobile--------------------------------------*/
+@media only screen and (max-width: 750px){
+    .grid-container{
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-areas:
+            "system system system system system system system system system system system system";
+    }
+}
+/*Tablet--------------------------------------*/
+@media only screen and (min-width: 751px) and (max-width: 1010px){
+    .grid-container{
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-areas:
+            ". . . system system system system system system . . .";
+    }
+}
+/*Desktop-------------------------------------*/
+@media only screen and (min-width: 1011px){
+    .grid-container{
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-areas:
+            ". . . . system system system system . . . .";
+    }
+}
