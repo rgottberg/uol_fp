@@ -8,11 +8,17 @@
     <body>
         <div class="grid-container">
             <section>
-                <ul>
-                    <li>Empty HTML.</li>
-                    <li>Responsive design.</li>
-                    <li>Story created upon rendering.</li>
-                </ul>
+                <p>Create a new story</p>
+                <form action="{% url 'generate' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Create">
+                </form>
+                <p id="feedback">{{feedback}}</p>
+                <p>Listen to a story</p>
+                <form action="{% url 'play' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Open">
+                </form>
             </section>
         </div>
     </body>

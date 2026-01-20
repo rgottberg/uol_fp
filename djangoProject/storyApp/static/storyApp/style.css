@@ -9,10 +9,15 @@ Created on Tue Jan 20 09:31:05 2026
 */
 
 section{
+    margin-top: 10em;
     border-style: ridge;
     border-width: 0.1em;
     border-radius: 10px;
 }
+
+#feedback{
+    color:rgb(255,0,0);
+    }
 
 /*Grid ----------------------------------------------------------------------*/
 /*mapping-------------------------------------*/    

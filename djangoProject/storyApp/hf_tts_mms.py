@@ -11,6 +11,8 @@ from smolagents import tool
 from transformers import VitsModel, AutoTokenizer
 import torch
 import torchaudio
+from pathlib import Path
+from django.conf import settings
 
 @tool
 def create_audio(story: str) -> str:
@@ -31,7 +33,10 @@ def create_audio(story: str) -> str:
     with torch.no_grad():
         output = model(**inputs).waveform
 
-    torchaudio.save("./story_audio.wav", 
+    filename = "story_audio.wav"
+    path = Path(settings.MEDIA_ROOT)
+
+    torchaudio.save(path / filename,
                     output.squeeze(0), 
                     model.config.sampling_rate)
     
