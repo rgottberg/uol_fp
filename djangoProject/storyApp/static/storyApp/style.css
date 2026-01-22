@@ -8,11 +8,19 @@ Created on Tue Jan 20 09:31:05 2026
 """
 */
 
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #1b1b1b;
+}
+
 section{
     margin-top: 10em;
-    border-style: ridge;
-    border-width: 0.1em;
-    border-radius: 10px;
+}
+
+#waveform, #recorder {
+    width: 100%;
+    height: 300px;
 }
 
 #feedback{

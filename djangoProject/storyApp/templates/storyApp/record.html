@@ -7,17 +7,15 @@
         <link rel="stylesheet" type="text/css" href="{% static 'storyApp/style.css' %}">
         <script src="{% static 'storyApp/p5_library/p5.js' %}"></script>
         <script src="{% static 'storyApp/p5_library/p5.sound.js' %}"></script>
-        <script>var story = "{% static 'storyApp/story_audio.wav' %}";</script>
+        <script>var soundSave = "{% static 'storyApp/myPrompt.wav' %}";</script>
     </head>
     <body>
         <div class="grid-container">
             <section>
-                <div id="waveform" aria-label="waveform"></div>
-                <button id="pause" aria-label="pause">pause</button>
-                <button id="play" aria-label="play">play</button>
-                <button id="stop" aria-label="stop">stop</button>
+                <div id="recorder" aria-label="waveform"></div>
+                <button id="record" aria-label="record">record</button>
             </section>
         </div>
     </body>
-    <script src="{% static 'storyApp/script_play.js' %}"></script>
+    <script src="{% static 'storyApp/script_record.js' %}"></script>
 </html>
