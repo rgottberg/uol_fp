@@ -35,9 +35,13 @@ def generate(request):
     
 
 def play(request):
-    if request.method == "POST":
-        filename = "story_audio.wav"
-        path = settings.MEDIA_URL
-        context = {"audio_file": path + filename}        
-        return render(request, "storyApp/play.html", context)
-    
+    filename = "story_audio.wav"
+    path = settings.MEDIA_URL
+    context = {"audio_file": path + filename}        
+    return render(request, "storyApp/play.html", context)  
+
+def record(request):
+    filename = "myPrompt.wav"
+    path = settings.MEDIA_URL
+    context = {"audio_file": path + filename}        
+    return render(request, "storyApp/record.html", context)  
