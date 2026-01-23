@@ -11,12 +11,7 @@
         <div class="grid-container">
             <section>
                 <div class="flex-container">
-                    <form action="{% url 'record' %}" method="post">
-                        {% csrf_token %}
-                        <div class="flex-container">
-                            <input id="main_btn_create" type="submit" value="Create a new story">
-                        </div>    
-                    </form>
+                    <p id="feedback">{{feedback}}</p>
                     <form action="{% url 'play' %}" method="post">
                         {% csrf_token %}
                         <div class="flex-container">

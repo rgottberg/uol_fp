@@ -6,13 +6,8 @@
 //@author: cod
 //"
 
-// pre-recorded SoundFile object
+// pre-recorded SoundFile object (audio story)
 var preRecordedSound;
-
-// preload pre-recorded SoundFile
-function preload(){
-  preRecordedSound = loadSound(story);
-}
 
 // FFT analyzer
 var fft;
@@ -31,6 +26,9 @@ function setup(){
     var play = document.getElementById("play");
     var stop = document.getElementById("stop");
 
+    // audio story
+    preRecordedSound = loadSound(story);
+
     // event listeners
     pause.addEventListener("click", () => {pauseSound(preRecordedSound)});
     play.addEventListener("click", () => {playSound(preRecordedSound)});
@@ -44,7 +42,7 @@ function setup(){
 function draw(){
   // clear canvas to visualize spectrum
   noStroke();
-  fill(255,255,255);
+  fill("#222222");
   rect(0,10,width,height);
   
   // FFT analyzer

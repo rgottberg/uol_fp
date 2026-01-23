@@ -12,8 +12,17 @@
     <body>
         <div class="grid-container">
             <section>
-                <div id="recorder" aria-label="waveform"></div>
-                <button id="record" aria-label="record">record</button>
+                <div class="flex-container">
+                    <div id="div_record" class="flex-container">
+                        <button id="record" aria-label="record">Record</button>
+                    </div>    
+                    <form action="{% url 'generate' %}" method="post">
+                        {% csrf_token %}
+                        <div class="flex-container">
+                            <input id="generate" type="submit" value="Create your story">
+                        </div>    
+                    </form>
+                </div>
             </section>
         </div>
     </body>

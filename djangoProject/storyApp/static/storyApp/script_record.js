@@ -24,14 +24,10 @@ function preload(){
 }
 
 // initialization
-function setup(){
-    // canvas
-    element = document.getElementById("recorder");
-    var canvas = createCanvas(element.clientWidth, element.clientHeight);
-    canvas.parent(element);
-    
+function setup(){   
     // HTML elements    
     var record = document.getElementById("record");
+    //var generate = document.getElementById("generate");
 
     // create an audio in
     mic = new p5.AudioIn();
@@ -52,19 +48,6 @@ function setup(){
     record.addEventListener("click", () => {recordSound(recorder,user_prompt,record)});
 
 }
-// drawing
-function draw(){
-  // clear canvas to visualize spectrum
-  noStroke();
-  fill(255,255,255);
-  rect(0,10,width,height);
-}
-
-// Resize the canvas when the browser's size changes.
-function windowResized() {
-    resizeCanvas(element.clientWidth, element.clientHeight);
-
-}
 // record
 function recordSound(recorder,soundfile,button){
   // ensure audio is enabled
@@ -76,9 +59,8 @@ function recordSound(recorder,soundfile,button){
     // change state
     state++;
     // style
-    button.innerText = "stop";
-    button.style.backgroundColor = "red";
-    button.style.color = "white";
+    button.innerText = "Stop";
+    button.style.backgroundColor = "#222222";
   }
   else if (state === 1) {
     // stop recorder and send result to soundFile
@@ -86,7 +68,7 @@ function recordSound(recorder,soundfile,button){
     // change state
     state++;
     // style
-    button.innerText = "play";
+    button.innerText = "Play";
     button.style.backgroundColor = "green";
   }
   else if (state === 2) {
@@ -96,8 +78,7 @@ function recordSound(recorder,soundfile,button){
     // change state
     state = 0;
     // style
-    button.innerText = "record";
-    button.style.backgroundColor = "lightgrey";
-    button.style.color = "black";
+    button.innerText = "Record";
+    button.style.backgroundColor = "red";
   }
 }

@@ -10,6 +10,12 @@ from django.conf import settings
 def index(request):
     return render(request, "storyApp/index.html")
 
+def record(request):
+    filename = "myPrompt.wav"
+    path = settings.MEDIA_URL
+    context = {"audio_file": path + filename}        
+    return render(request, "storyApp/record.html", context)
+
 def generate(request):
     if request.method == "POST":
         model = LiteLLMModel(
@@ -26,22 +32,16 @@ def generate(request):
 
         prompt = """ Create an audio story for children based on the user prompt 
                      contained in the audio file stored at the following path: 
-                     ./3_audio_man.wav"""
+                     ./media/3_audio_man.wav"""
         
         agent.run(prompt)
-        context = {"feedback": "Story generated"}
         
-        return render(request, "storyApp/index.html", context)
+        context = {"feedback": "Story generated: click on 'Play a story' to hear it."}        
+        
+        return render(request, "storyApp/index2.html", context)
     
-
 def play(request):
     filename = "story_audio.wav"
     path = settings.MEDIA_URL
     context = {"audio_file": path + filename}        
-    return render(request, "storyApp/play.html", context)  
-
-def record(request):
-    filename = "myPrompt.wav"
-    path = settings.MEDIA_URL
-    context = {"audio_file": path + filename}        
-    return render(request, "storyApp/record.html", context)  
+    return render(request, "storyApp/play.html", context)
