@@ -10,15 +10,13 @@
         <script>var story = "{{audio_file}}";</script>
     </head>
     <body>
-        <div class="grid-container">
-            <section>
-                <div id="waveform" aria-label="waveform"></div>
-                <div class="flex-container">
-                    <button id="pause" aria-label="pause">Pause</button>
-                    <button id="play" aria-label="play">Play</button>
-                    <button id="stop" aria-label="stop">Stop</button>
-                </div>
-            </section>
+        <div class="grid-container-play">
+            <div id="container_waveform" aria-label="waveform"></div>
+            <div id="container_playback" class="flex-container">
+                <button id="btn_pause" aria-label="pause">Pause</button>
+                <button id="btn_play" aria-label="play">Play</button>
+                <button id="btn_stop" aria-label="stop">Stop</button>
+            </div>
         </div>
     </body>
     <script src="{% static 'storyApp/script_play.js' %}"></script>

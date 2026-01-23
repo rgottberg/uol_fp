@@ -17,22 +17,22 @@ var element;
 // initialization
 function setup(){  
     // canvas
-    element = document.getElementById("waveform");
+    element = document.getElementById("container_waveform");
     var canvas = createCanvas(element.clientWidth, element.clientHeight);
     canvas.parent(element);
     
     // HTML elements    
-    var pause = document.getElementById("pause");
-    var play = document.getElementById("play");
-    var stop = document.getElementById("stop");
+    var btn_pause = document.getElementById("btn_pause");
+    var btn_play = document.getElementById("btn_play");
+    var btn_stop = document.getElementById("btn_stop");
 
     // audio story
     preRecordedSound = loadSound(story);
 
     // event listeners
-    pause.addEventListener("click", () => {pauseSound(preRecordedSound)});
-    play.addEventListener("click", () => {playSound(preRecordedSound)});
-    stop.addEventListener("click", () => {stopSound(preRecordedSound)});
+    btn_pause.addEventListener("click", () => {pauseSound(preRecordedSound)});
+    btn_play.addEventListener("click", () => {playSound(preRecordedSound)});
+    btn_stop.addEventListener("click", () => {stopSound(preRecordedSound)});
     
     // FFT analyzer
     fft = new p5.FFT(0.2,256);

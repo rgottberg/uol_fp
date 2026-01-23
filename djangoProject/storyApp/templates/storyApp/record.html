@@ -7,23 +7,18 @@
         <link rel="stylesheet" type="text/css" href="{% static 'storyApp/style.css' %}">
         <script src="{% static 'storyApp/p5_library/p5.js' %}"></script>
         <script src="{% static 'storyApp/p5_library/p5.sound.js' %}"></script>
-        <script>var soundSave = "{% static 'storyApp/myPrompt.wav' %}";</script>
     </head>
     <body>
-        <div class="grid-container">
-            <section>
+        <div class="grid-container-record">
+            <div id="container_record">    
+                <button id="btn_record" aria-label="record">Record</button>        
+            </div>
+            <form id="container_generate" action="{% url 'generate' %}" method="post">
+                {% csrf_token %}
                 <div class="flex-container">
-                    <div id="div_record" class="flex-container">
-                        <button id="record" aria-label="record">Record</button>
-                    </div>    
-                    <form action="{% url 'generate' %}" method="post">
-                        {% csrf_token %}
-                        <div class="flex-container">
-                            <input id="generate" type="submit" value="Create your story">
-                        </div>    
-                    </form>
-                </div>
-            </section>
+                    <input id="btn_generate" type="submit" value="Generate">
+                </div>    
+            </form>
         </div>
     </body>
     <script src="{% static 'storyApp/script_record.js' %}"></script>
