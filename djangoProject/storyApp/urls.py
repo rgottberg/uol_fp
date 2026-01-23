@@ -15,4 +15,5 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("generate/", views.generate, name="generate"),
     path("play/", views.play, name="play"),
+    path("record/", views.record, name="record"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

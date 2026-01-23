@@ -2,26 +2,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{% static 'storyApp/style.css' %}">
         <script src="{% static 'storyApp/script.js' %}"></script>
     </head>
     <body>
         <div class="grid-container">
             <section>
-                <p>Create a new story</p>
-                <form action="{% url 'generate' %}" method="post">
-                    {% csrf_token %}
-                    <input type="submit" value="Create">
-                </form>
-                <p id="feedback">{{feedback}}</p>
-                <p>Listen to a story</p>
-                <form action="{% url 'play' %}" method="post">
-                    {% csrf_token %}
-                    <input type="submit" value="Open">
-                </form>
+                <div class="flex-container">
+                    <form action="{% url 'record' %}" method="post">
+                        {% csrf_token %}
+                        <div class="flex-container">
+                            <input id="main_btn_create" type="submit" value="Create a new story">
+                        </div>    
+                    </form>
+                    <form action="{% url 'play' %}" method="post">
+                        {% csrf_token %}
+                        <div class="flex-container">
+                            <input id="main_btn_listen" type="submit" value="Play a story">
+                        </div>
+                    </form>
+                </div>
             </section>
         </div>
     </body>
 </html>
-
-
