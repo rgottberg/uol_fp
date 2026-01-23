@@ -14,19 +14,10 @@ var recorder;
 var user_prompt;
 var state=0;
 
-// variable for pre-recorded SoundFile object
-var preRecordedSound;
-
-// preload pre-recorded SoundFile
-function preload(){
-  //soundFormats('mp3', 'wav');
-  preRecordedSound = loadSound(soundTest);
-}
-
 // initialization
 function setup(){   
     // HTML elements    
-    var record = document.getElementById("record");
+    var record = document.getElementById("btn_record");
     //var generate = document.getElementById("generate");
 
     // create an audio in
@@ -74,7 +65,6 @@ function recordSound(recorder,soundfile,button){
   else if (state === 2) {
     // play and save recording
     soundfile.play();
-    save(soundfile, soundSave); // Saving in downloads - to fix
     // change state
     state = 0;
     // style

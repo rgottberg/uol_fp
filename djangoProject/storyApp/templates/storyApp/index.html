@@ -8,23 +8,16 @@
         <script src="{% static 'storyApp/script.js' %}"></script>
     </head>
     <body>
-        <div class="grid-container">
-            <section>
-                <div class="flex-container">
-                    <form action="{% url 'record' %}" method="post">
-                        {% csrf_token %}
-                        <div class="flex-container">
-                            <input id="main_btn_create" type="submit" value="Create a new story">
-                        </div>    
-                    </form>
-                    <form action="{% url 'play' %}" method="post">
-                        {% csrf_token %}
-                        <div class="flex-container">
-                            <input id="main_btn_listen" type="submit" value="Play a story">
-                        </div>
-                    </form>
-                </div>
-            </section>
+        <div class="grid-container-index">
+            <form id="container_create" action="{% url 'record' %}" method="post">
+                {% csrf_token %}
+                <input id="btn_create" type="submit" value="Create a new story">
+            </form>
+            <form id="container_listen" action="{% url 'play' %}" method="post">
+                {% csrf_token %}
+                <input id="btn_listen" type="submit" value="Listen to a story">
+            </form>
+            <p id="feedback">{{feedback}}</p>
         </div>
     </body>
 </html>

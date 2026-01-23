@@ -12,91 +12,87 @@ body {
     padding: 0;
     margin: 0;
 }
-
-section{
-    margin-top: 10em;
-}
-
-#feedback{
-    color: red;
+#container_create,
+#container_listen,
+#container_record,
+#container_generate{
+    margin-top: 5em;
     padding: 2em;
-    text-align: center;
 }
-
-/* buttons */
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
+#container_waveform{
+    margin-top: 5em;
 }
-button, 
-form, 
-#feedback,
-input[type=submit],
-#div_record{
-    flex-grow: 1;
-}
-/* buttons: index & record*/
-form,
-#div_record,
-#div_generate
-{
-    padding: 1em;
-}
-input[type=submit], 
-#record,
-#generate{
+#btn_create,
+#btn_listen,
+#btn_record,
+#btn_generate{
+    width: 100%;
     border: none;
     border-radius: 1em;
-    font-size: 2em;
+    font-size: 1.5em;
     color: white;
     padding: 2em;
     cursor: pointer;
 }
-#main_btn_create{
-    background-color: green;
-}
-#main_btn_listen{
-    background-color: blue;
-}
-#record{
-    background-color: red;
-}
-#generate{
-    background-color: blue;
-}
-
 /* playback buttons */
-#pause,
-#play,
-#stop{
+#btn_pause,
+#btn_play,
+#btn_stop{
     border: none;
     border-radius: 0.2em;
     font-size: 1em;
     color: white;
     padding: 1em;
-    cursor: pointer;
+    cursor: pointer;   
 }
-#pause{
-      color: orange;
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
 }
-#play{
-      color: green;
+button{
+    flex-grow: 1;
 }
-#stop{
-      color: #222222;
-}
-
 /* hover */
-#main_btn_create:hover,
-#main_btn_listen:hover,
-#pause:hover,
-#play:hover,
-#stop:hover{
+#btn_create:hover,
+#btn_listen:hover,
+#btn_generate:hover,
+#btn_pause:hover,
+#btn_play:hover,
+#btn_stop:hover{
   background-color: grey;
   color: white;
 }
-
-#waveform {
+/* colors */
+#btn_create{
+    background-color: green;
+}
+#btn_listen{
+    background-color: blue;
+}
+#btn_record{
+    background-color: red;
+}
+#btn_generate{
+    background-color: blue;
+}
+#btn_pause{
+      color: orange;
+}
+#btn_play{
+      color: green;
+}
+#btn_stop{
+      color: #222222;
+}
+/* feedback */
+#feedback{
+    font-size: 1.5em;
+    color: red;
+    padding: 2em;
+    text-align: center;
+}
+/* waveform */
+#container_waveform {
     width: 100%;
     height: 300px;
     border-radius: 0.2em;
@@ -104,32 +100,82 @@ input[type=submit],
 
 /*Grid ----------------------------------------------------------------------*/
 /*mapping-------------------------------------*/    
-section{grid-area: system;}
+#container_create{grid-area: container_create;}
+#container_listen{grid-area: container_listen;}
+#feedback{grid-area: feedback;}
+#container_record{grid-area: container_record;}
+#container_generate{grid-area: container_generate;}
+#container_waveform{grid-area: container_waveform;}
+#container_playback{grid-area: container_playback;}
 
-/*Mobile--------------------------------------*/
+/* Mobile */
 @media only screen and (max-width: 750px){
-    .grid-container{
+    .grid-container-index{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
-            "system system system system system system system system system system system system";
+            "container_create container_create container_create container_create container_create container_create container_create container_create container_create container_create container_create container_create"
+            "container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen "
+            "feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback";
+    }
+    .grid-container-record{
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-areas:
+            "container_record container_record container_record container_record container_record container_record container_record container_record container_record container_record container_record container_record"
+            "container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate";
+    }
+    .grid-container-play{
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-areas:
+            "container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform"
+            "container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback";
     }
 }
-/*Tablet--------------------------------------*/
+/* Tablet */
 @media only screen and (min-width: 751px) and (max-width: 1010px){
-    .grid-container{
+    .grid-container-index{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
-            ". . . system system system system system system . . .";
+            "container_create container_create container_create container_create container_create container_create container_listen container_listen container_listen container_listen container_listen container_listen"
+            "feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback";
+    }
+    .grid-container-record{
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-areas:
+            "container_record container_record container_record container_record container_record container_record container_generate container_generate container_generate container_generate container_generate container_generate";
+    }
+    .grid-container-play{
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-areas:
+            ". . container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform . ."
+            ". . container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback . .";
     }
 }
-/*Desktop-------------------------------------*/
+/* Desktop */
 @media only screen and (min-width: 1011px){
-    .grid-container{
+    .grid-container-index{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
-            ". . . . system system system system . . . .";
+            ". . container_create container_create container_create container_create container_listen container_listen container_listen container_listen . ."
+            ". . feedback feedback feedback feedback feedback feedback feedback feedback . .";
+    }
+    .grid-container-record{
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-areas:
+            ". . container_record container_record container_record container_record container_generate container_generate container_generate container_generate . .";
+    }
+    .grid-container-play{
+        display: grid;
+        grid-template-columns: repeat(12, 8.33%);
+        grid-template-areas:
+            ". . . container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform . . ."
+            ". . . container_playback container_playback container_playback container_playback container_playback container_playback . . .";
     }
 }
