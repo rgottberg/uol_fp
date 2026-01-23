@@ -13,9 +13,11 @@ var mic;
 var recorder;
 var user_prompt;
 var state=0;
+var soundBlob; 
 
 // initialization
-function setup(){   
+function setup(){
+    noCanvas()   
     // HTML elements    
     var record = document.getElementById("btn_record");
     //var generate = document.getElementById("generate");
@@ -65,10 +67,26 @@ function recordSound(recorder,soundfile,button){
   else if (state === 2) {
     // play and save recording
     soundfile.play();
+    // audio data blob
+    soundBlob = soundfile.getBlob();
+    sendBlob(soundBlob)
     // change state
     state = 0;
     // style
     button.innerText = "Record";
     button.style.backgroundColor = "red";
   }
+}
+function sendBlob(soundBlob) {
+    // Now we can send the blob to a server...
+    var serverUrl = 'http://127.0.0.1:8000/blob/';
+    
+    var formData = new FormData();
+    formData.append('soundBlob', soundBlob);
+    
+    var httpRequestOptions = {
+        method: 'POST',
+        body: formData
+    };
+    httpDo(serverUrl, httpRequestOptions);
 }
