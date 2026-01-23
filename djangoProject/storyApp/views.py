@@ -38,7 +38,7 @@ def generate(request):
         
         context = {"feedback": "Story generated: click on 'Play a story' to hear it."}        
         
-        return render(request, "storyApp/index2.html", context)
+        return render(request, "storyApp/index.html", context)
     
 def play(request):
     filename = "story_audio.wav"
