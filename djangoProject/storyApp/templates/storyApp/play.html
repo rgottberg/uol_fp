@@ -1,23 +1,19 @@
+{% extends "storyApp/base.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{% static 'storyApp/style.css' %}">
-        <script src="{% static 'storyApp/p5_library/p5.js' %}"></script>
-        <script src="{% static 'storyApp/p5_library/p5.sound.js' %}"></script>
-        <script>var story = "{{audio_file}}";</script>
-    </head>
-    <body>
-        <div class="grid-container-play">
-            <div id="container_waveform" aria-label="waveform"></div>
-            <div id="container_playback" class="flex-container">
-                <button id="btn_play" aria-label="play">Play</button>
-                <button id="btn_pause" aria-label="pause">Pause</button>
-                <button id="btn_stop" aria-label="stop">Stop</button>
-            </div>
-        </div>
-    </body>
-    <script src="{% static 'storyApp/script_play.js' %}"></script>
-</html>
+
+{% block script %}
+<script>var story = "{{audio_file}}";</script>
+<script src="{% static 'storyApp/script_play.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="grid-container-play">
+    <div id="container_waveform" aria-label="waveform"></div>
+    <div id="container_playback" class="flex-container">
+        <button id="btn_play" aria-label="play">Play</button>
+        <button id="btn_pause" aria-label="pause">Pause</button>
+        <button id="btn_stop" aria-label="stop">Stop</button>
+    </div>
+</div>
+{% endblock %}
