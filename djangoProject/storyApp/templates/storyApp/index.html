@@ -1,23 +1,17 @@
+{% extends "storyApp/base.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{% static 'storyApp/style.css' %}">
-        <script src="{% static 'storyApp/script.js' %}"></script>
-    </head>
-    <body>
-        <div class="grid-container-index">
-            <form id="container_create" action="{% url 'record' %}" method="post">
-                {% csrf_token %}
-                <input id="btn_create" type="submit" value="Create a new story">
-            </form>
-            <form id="container_listen" action="{% url 'play' %}" method="post">
-                {% csrf_token %}
-                <input id="btn_listen" type="submit" value="Listen to a story">
-            </form>
-            <p id="feedback">{{feedback}}</p>
-        </div>
-    </body>
-</html>
+
+{% block body %}
+<div class="grid-container-index">
+    <form id="container_create" action="{% url 'record' %}" method="post">
+        {% csrf_token %}
+        <input id="btn_create" type="submit" value="Create a new story">
+    </form>
+    <form id="container_listen" action="{% url 'play' %}" method="post">
+        {% csrf_token %}
+        <input id="btn_listen" type="submit" value="Listen to a story">
+    </form>
+    <p id="feedback">{{feedback}}</p>
+</div>
+{% endblock %}
