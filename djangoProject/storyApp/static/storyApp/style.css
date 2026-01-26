@@ -171,7 +171,7 @@ button{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
-            ". . container_record container_record container_record container_record container_generate container_generate container_generate container_generate . ."
+            ". . container_record container_record container_record container_record container_generate container_generate container_generate container_generate . .";
     }
     .grid-container-play{
         display: grid;
