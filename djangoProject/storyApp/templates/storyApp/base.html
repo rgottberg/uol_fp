@@ -10,6 +10,12 @@
         {% block script %} {% endblock %}
     </head>
     <body>
+        {% block grid %} {% endblock %}
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'record' %}">Create</a>
+            <a href="{% url 'play' %}">Listen</a>
+        </nav>
         {% block body %} {% endblock %}
     </body>
 </html>

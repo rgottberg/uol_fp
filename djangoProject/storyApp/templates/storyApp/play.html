@@ -7,8 +7,11 @@
 <script src="{% static 'storyApp/script_play.js' %}"></script>
 {% endblock %}
 
-{% block body %}
+{% block grid %}
 <div class="grid-container-play">
+{% endblock %}
+
+{% block body %}
     <div id="container_waveform" aria-label="waveform"></div>
     <div id="container_playback" class="flex-container">
         <button id="btn_play" aria-label="play">Play</button>
