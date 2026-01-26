@@ -52,7 +52,7 @@ function recordSound(recorder,soundfile,button){
     // change state
     state++;
     // style
-    button.innerText = "Stop";
+    button.innerText = "Stop your recording";
     button.style.backgroundColor = "#222222";
   }
   else if (state === 1) {
@@ -61,7 +61,7 @@ function recordSound(recorder,soundfile,button){
     // change state
     state++;
     // style
-    button.innerText = "Play";
+    button.innerText = "Play your recording";
     button.style.backgroundColor = "green";
   }
   else if (state === 2) {
@@ -73,7 +73,7 @@ function recordSound(recorder,soundfile,button){
     // change state
     state = 0;
     // style
-    button.innerText = "Record";
+    button.innerText = "Tell me what your story is about ...";
     button.style.backgroundColor = "red";
   }
 }

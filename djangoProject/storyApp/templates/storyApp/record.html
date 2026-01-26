@@ -11,13 +11,11 @@
     <body>
         <div class="grid-container-record">
             <div id="container_record">    
-                <button id="btn_record" aria-label="record">Record</button>        
+                <button id="btn_record" aria-label="record">Tell me what your story is about ...</button>        
             </div>
             <form id="container_generate" action="{% url 'generate' %}" method="post">
                 {% csrf_token %}
-                <div class="flex-container">
-                    <input id="btn_generate" type="submit" value="Generate">
-                </div>    
+                <input id="btn_generate" type="submit" value="Let's generate your story">
             </form>
         </div>
     </body>

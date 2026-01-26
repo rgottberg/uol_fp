@@ -16,17 +16,19 @@ body {
 #container_listen,
 #container_record,
 #container_generate{
-    margin-top: 5em;
+    margin-top: 2em;
     padding: 2em;
 }
 #container_waveform{
-    margin-top: 5em;
+    margin-top: 2em;
 }
 #btn_create,
 #btn_listen,
 #btn_record,
 #btn_generate{
     width: 100%;
+    height: 100%;
+    white-space: normal; 
     border: none;
     border-radius: 1em;
     font-size: 1.5em;
