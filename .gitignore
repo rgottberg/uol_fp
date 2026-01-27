@@ -11,3 +11,7 @@
 
 #output
 /djangoProject/media
+
+#p5 libraries
+/djangoProject/storyApp/static/storyApp/p5_library
+
