@@ -48,7 +48,8 @@ function draw(){
   // FFT analyzer
   push();
     translate(0,height/2);
-    fill(0,255,0);
+    noFill();
+    stroke(0,255,0);
     spectrum(preRecordedSound,fft);
     pop();
 }
