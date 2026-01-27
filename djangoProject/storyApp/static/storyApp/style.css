@@ -101,7 +101,8 @@ button{
 }
 
 /*Grid ----------------------------------------------------------------------*/
-/*mapping-------------------------------------*/    
+/*mapping-------------------------------------*/ 
+nav{grid-area: nav;}
 #container_create{grid-area: container_create;}
 #container_listen{grid-area: container_listen;}
 #feedback{grid-area: feedback;}
@@ -116,6 +117,7 @@ button{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
+            "nav nav nav nav nav nav nav nav nav nav nav nav"
             "container_create container_create container_create container_create container_create container_create container_create container_create container_create container_create container_create container_create"
             "container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen container_listen "
             "feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback";
@@ -124,6 +126,7 @@ button{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
+            "nav nav nav nav nav nav nav nav nav nav nav nav"
             "container_record container_record container_record container_record container_record container_record container_record container_record container_record container_record container_record container_record"
             "container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate container_generate";
     }
@@ -131,6 +134,7 @@ button{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
+            "nav nav nav nav nav nav nav nav nav nav nav nav"
             "container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform"
             "container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback";
     }
@@ -141,6 +145,7 @@ button{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
+            "nav nav nav nav nav nav nav nav nav nav nav nav"
             "container_create container_create container_create container_create container_create container_create container_listen container_listen container_listen container_listen container_listen container_listen"
             "feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback";
     }
@@ -148,12 +153,14 @@ button{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
+            "nav nav nav nav nav nav nav nav nav nav nav nav"
             "container_record container_record container_record container_record container_record container_record container_generate container_generate container_generate container_generate container_generate container_generate";
     }
     .grid-container-play{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
+            "nav nav nav nav nav nav nav nav nav nav nav nav"
             ". . container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform . ."
             ". . container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback . .";
     }
@@ -164,6 +171,7 @@ button{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
+            "nav nav nav nav nav nav nav nav nav nav nav nav"
             ". . container_create container_create container_create container_create container_listen container_listen container_listen container_listen . ."
             ". . feedback feedback feedback feedback feedback feedback feedback feedback . .";
     }
@@ -171,12 +179,14 @@ button{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
+            "nav nav nav nav nav nav nav nav nav nav nav nav"
             ". . container_record container_record container_record container_record container_generate container_generate container_generate container_generate . .";
     }
     .grid-container-play{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
+            "nav nav nav nav nav nav nav nav nav nav nav nav"
             ". . . container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform . . ."
             ". . . container_playback container_playback container_playback container_playback container_playback container_playback . . .";
     }

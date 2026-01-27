@@ -19,7 +19,6 @@ def record(request):
     context = {"audio_file": path + filename}        
     return render(request, "storyApp/record.html", context)
 
-@csrf_exempt
 def blob(request):
     if request.method == 'POST':
         # handle uploaded file
