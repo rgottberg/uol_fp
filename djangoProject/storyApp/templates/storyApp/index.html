@@ -7,14 +7,16 @@
 {% endblock %}
 
 {% block body %}
-    <form id="container_create" action="{% url 'record' %}" method="post">
-        {% csrf_token %}
-        <input id="btn_create" type="submit" value="Create a new story">
-    </form>
-    <form id="container_listen" action="{% url 'play' %}" method="post">
-        {% csrf_token %}
-        <input id="btn_listen" type="submit" value="Listen to a story">
-    </form>
+    <div id="container_create">    
+        <button id="btn_create" aria-label="Create a new story">
+            <a href="{% url 'record' %}">Create a new story</a>
+        </button>        
+    </div>
+    <div id="container_listen">    
+        <button id="btn_listen" aria-label="Listen to a story">
+            <a href="{% url 'play' %}">Listen to a story</a>
+        </button>        
+    </div>
     <p id="feedback">{{feedback}}</p>
 </div>
 {% endblock %}

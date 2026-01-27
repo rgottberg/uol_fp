@@ -12,6 +12,15 @@ body {
     padding: 0;
     margin: 0;
 }
+nav {
+    border-bottom: solid;
+    border-color: #222222;
+}
+#menu > a{
+    padding: 0.5em;
+    color: #222222;
+}
+
 .grid-container-index,
 .grid-container-record,
 .grid-container-play{
@@ -50,14 +59,20 @@ nav,
     padding: 1em;
     cursor: pointer;   
 }
-.flex-container {
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.flex-container-player {
     display: flex;
     flex-wrap: wrap;
 }
 button{
     flex-grow: 1;
 }
-/* hover */
+/* colors */
 #btn_create:hover,
 #btn_listen:hover,
 #btn_generate:hover,
@@ -67,7 +82,10 @@ button{
   background-color: grey;
   color: white;
 }
-/* colors */
+button > a{
+    text-decoration: none;
+    color: white;
+}
 #btn_create{
     background-color: green;
 }
@@ -81,13 +99,13 @@ button{
     background-color: blue;
 }
 #btn_pause{
-      color: orange;
+    color: orange;
 }
 #btn_play{
-      color: green;
+    color: green;
 }
 #btn_stop{
-      color: #222222;
+    color: #222222;
 }
 /* feedback */
 #feedback{
