@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 # import libraries
-from smolagents import CodeAgent, LiteLLMModel
+from smolagents import ToolCallingAgent, LiteLLMModel
 from .hf_asr_whisper import transcribe_speech
 from .ollama_story import create_story
 from .hf_tts_mms import create_audio
@@ -44,7 +44,7 @@ def generate(request):
             api_base="http://localhost:11434",
             )
            
-        agent = CodeAgent(
+        agent = ToolCallingAgent(
             tools=[transcribe_speech,create_story,create_audio],
             model=model,
             max_steps=3
