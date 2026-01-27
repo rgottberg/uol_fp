@@ -22,10 +22,11 @@ def transcribe_speech(file_path: str) -> str:
     Args:
         file_path: path to the file containing the speech.
     """
-    checkpoint = "openai/whisper-medium"
-    
-    processor = WhisperProcessor.from_pretrained(checkpoint)
-    model = WhisperForConditionalGeneration.from_pretrained(checkpoint)
+    checkpoint_dir = "./hf_models/whisper-medium/"
+    processor = WhisperProcessor.from_pretrained(checkpoint_dir,
+                                                 local_files_only=True)
+    model = WhisperForConditionalGeneration.from_pretrained(checkpoint_dir,
+                                                            local_files_only=True)
     
     model.config.forced_decoder_ids = None
     

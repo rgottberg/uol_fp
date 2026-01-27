@@ -26,9 +26,11 @@ def create_audio(story: str, file_path: str) -> str:
         story: text of the story to be converted into speech.
         file_path: path to the output audio file.
     """
-    checkpoint_dir = "./hf_mms-tts-eng/"
-    model = VitsModel.from_pretrained(checkpoint_dir)
-    tokenizer = AutoTokenizer.from_pretrained(checkpoint_dir)
+    checkpoint_dir = "./hf_models/mms-tts-eng/"
+    model = VitsModel.from_pretrained(checkpoint_dir,
+                                      local_files_only=True)
+    tokenizer = AutoTokenizer.from_pretrained(checkpoint_dir,
+                                              local_files_only=True)
         
     inputs = tokenizer(story, return_tensors="pt")
     
