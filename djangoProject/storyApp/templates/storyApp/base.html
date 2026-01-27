@@ -11,10 +11,15 @@
     </head>
     <body>
         {% block grid %} {% endblock %}
-        <nav>
-            <a href="{% url 'index' %}">Home</a>
-            <a href="{% url 'record' %}">Create</a>
-            <a href="{% url 'play' %}">Listen</a>
+        <nav class= "flex-container">
+            <div>
+                <h1>storyApp</h1>
+            </div>
+            <div id="menu">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'record' %}">Create</a>
+                <a href="{% url 'play' %}">Listen</a>
+            </div>
         </nav>
         {% block body %} {% endblock %}
     </body>
