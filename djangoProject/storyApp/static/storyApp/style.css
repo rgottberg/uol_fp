@@ -12,15 +12,18 @@ body {
     padding: 0;
     margin: 0;
 }
+.grid-container-index,
+.grid-container-record,
+.grid-container-play{
+    margin-top: 2em;
+    padding: 2em;
+}
+nav,
 #container_create,
 #container_listen,
 #container_record,
 #container_generate{
-    margin-top: 2em;
-    padding: 2em;
-}
-#container_waveform{
-    margin-top: 2em;
+    margin-bottom: 2em;
 }
 #btn_create,
 #btn_listen,
@@ -143,51 +146,51 @@ nav{grid-area: nav;}
 @media only screen and (min-width: 751px) and (max-width: 1010px){
     .grid-container-index{
         display: grid;
-        grid-template-columns: repeat(12, 8.33%);
+        grid-template-columns: repeat(13, 7.69%);
         grid-template-areas:
-            "nav nav nav nav nav nav nav nav nav nav nav nav"
-            "container_create container_create container_create container_create container_create container_create container_listen container_listen container_listen container_listen container_listen container_listen"
-            "feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback";
+            "nav nav nav nav nav nav nav nav nav nav nav nav nav"
+            "container_create container_create container_create container_create container_create container_create . container_listen container_listen container_listen container_listen container_listen container_listen"
+            "feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback feedback";
     }
     .grid-container-record{
         display: grid;
-        grid-template-columns: repeat(12, 8.33%);
+        grid-template-columns: repeat(13, 7.69%);
         grid-template-areas:
-            "nav nav nav nav nav nav nav nav nav nav nav nav"
-            "container_record container_record container_record container_record container_record container_record container_generate container_generate container_generate container_generate container_generate container_generate";
+            "nav nav nav nav nav nav nav nav nav nav nav nav nav"
+            "container_record container_record container_record container_record container_record container_record . container_generate container_generate container_generate container_generate container_generate container_generate";
     }
     .grid-container-play{
         display: grid;
         grid-template-columns: repeat(12, 8.33%);
         grid-template-areas:
-            "nav nav nav nav nav nav nav nav nav nav nav nav"
-            ". . container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform . ."
-            ". . container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback . .";
+            "nav nav nav nav nav nav nav nav nav nav nav nav "
+            "container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform"
+            "container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback";
     }
 }
 /* Desktop */
 @media only screen and (min-width: 1011px){
     .grid-container-index{
         display: grid;
-        grid-template-columns: repeat(12, 8.33%);
+        grid-template-columns: repeat(13, 7.69%);
         grid-template-areas:
-            "nav nav nav nav nav nav nav nav nav nav nav nav"
-            ". . container_create container_create container_create container_create container_listen container_listen container_listen container_listen . ."
-            ". . feedback feedback feedback feedback feedback feedback feedback feedback . .";
+            ". . nav nav nav nav nav nav nav nav nav . ."
+            ". . container_create container_create container_create container_create . container_listen container_listen container_listen container_listen . ."
+            ". . feedback feedback feedback feedback feedback feedback feedback feedback feedback . .";
     }
     .grid-container-record{
         display: grid;
-        grid-template-columns: repeat(12, 8.33%);
+        grid-template-columns: repeat(13, 7.69%);
         grid-template-areas:
-            "nav nav nav nav nav nav nav nav nav nav nav nav"
-            ". . container_record container_record container_record container_record container_generate container_generate container_generate container_generate . .";
+            ". . nav nav nav nav nav nav nav nav nav . ."
+            ". . container_record container_record container_record container_record . container_generate container_generate container_generate container_generate . .";
     }
     .grid-container-play{
         display: grid;
-        grid-template-columns: repeat(12, 8.33%);
+        grid-template-columns: repeat(13, 7.69%);
         grid-template-areas:
-            "nav nav nav nav nav nav nav nav nav nav nav nav"
-            ". . . container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform . . ."
-            ". . . container_playback container_playback container_playback container_playback container_playback container_playback . . .";
+            ". . nav nav nav nav nav nav nav nav nav . ."
+            ". . container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform container_waveform . ."
+            ". . container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback container_playback . .";
     }
 }
