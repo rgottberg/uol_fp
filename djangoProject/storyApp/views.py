@@ -16,7 +16,7 @@ def index(request):
 def record(request):
     filename = "myPrompt.wav"
     path = settings.MEDIA_URL
-    context = {"audio_file": path + filename}        
+    context = {"audio_file": path + filename}
     return render(request, "storyApp/record.html", context)
 
 def blob(request):
@@ -56,7 +56,7 @@ def generate(request):
         
         agent.run(prompt)
         
-        context = {"feedback": "Story generated: click on 'Play a story' to hear it."}        
+        context = {"feedback": "You can now play your story."}
         
         return render(request, "storyApp/index.html", context)
     
