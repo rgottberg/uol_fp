@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 # import libraries
-from smolagents import ToolCallingAgent, LiteLLMModel
+from smolagents import ToolCallingAgent, LiteLLMModel, TransformersModel, CodeAgent
 from .hf_asr_whisper import transcribe_speech
 from .ollama_story import create_story
 from .hf_tts_mms import create_audio
@@ -43,11 +43,16 @@ def generate(request):
             # model_id="ollama_chat/llama3.2:3b",
             api_base="http://localhost:11434",
             )
+        
+        # model = TransformersModel(
+        #     model_id="Qwen/Qwen2.5-Coder-3B"
+        #     )
            
         agent = ToolCallingAgent(
             tools=[transcribe_speech,create_story,create_audio],
             model=model,
             max_steps=3
+            # max_steps=5
         )
 
         prompt = """ Create an audio story for children based on the user prompt 
