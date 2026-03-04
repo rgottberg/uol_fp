@@ -7,24 +7,24 @@ The project is based on the template “4.1 Orchestrating AI models to achieve a
 # Installing python requirements (terminal)
 
 - Start from the project root folder "uol_fp"
-- Create virtual enviroment: python3 -m venv venv
-- Run the command "pip install -r requirements.txt"
+- Create a virtual environment with the command `python3 -m venv venv`
+- Install the requirements with the command `pip install -r requirements.txt`
 
 # Downloading models and other frameworks
 
-- p5.js (v1.11.11 2025-10-20) and p5.sound.js (v1.0.1 - 2021-05-25): download the complete library (https://p5js.org/download/) and save the files p5.js and p5.sound.js in the folder djangoProject/storyApp/static/storyApp/p5_library.
-- HuggingFace models (ASR & TTS): run the python script "download_hf_models.py" and ensure the models are saved in the folders djangoProject/hf_models/mms-tts-eng/ and djangoProject/hf_models/whisper-medium. 
-- Ollama library: download the framework with the command "curl -fsSL https://ollama.com/install.sh | sh"
-- Ollama models: download the models with the commands "ollama run gemma3:1b" (LLM) and "ollama run qwen2.5-coder:3b" (agent).
-- ffmpeg: run the command sudo apt install 
+- p5.js (v1.11.11 2025-10-20) and p5.sound.js (v1.0.1 - 2021-05-25): download the complete library from https://p5js.org/download/ and save the files p5.js and p5.sound.js in the folder "djangoProject/storyApp/static/storyApp/p5_library".
+- HuggingFace models (ASR & TTS): run the python script "download_hf_models.py" and ensure the models are saved in the folders "djangoProject/hf_models/mms-tts-eng/" and "djangoProject/hf_models/whisper-medium". 
+- Ollama library: download the framework with the command `curl -fsSL https://ollama.com/install.sh | sh`
+- Ollama models: download the models with the commands `ollama run gemma3:1b` and `ollama run qwen2.5-coder:3b`.
+- ffmpeg: run the command `sudo apt install` 
 
 # Running the app (terminal)
 
 - Start from the project root folder "uol_fp"
-- Activate the virtual environment with the command: source venv/bin/activate
-- [Optional] To run the app without the internet connection, cache a "tokenizer" file locally by running the command: python -c "import tiktoken; tiktoken.get_encoding('cl100k_base')" 
-- Move to the Django folder with the command cd djangoProject
-- Start the server with the command python3 manage.py runserver
+- Activate the virtual environment with the command `source venv/bin/activate`
+- [Optional] To run the app without the internet connection, cache a "tokenizer" file locally with the command `python -c "import tiktoken; tiktoken.get_encoding('cl100k_base')"` 
+- Move to the Django folder with the command `cd djangoProject`
+- Start the server with the command `python3 manage.py runserver`
 
 The app should be running on http://127.0.0.1:8000/
 
