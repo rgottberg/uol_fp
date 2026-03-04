@@ -32,7 +32,7 @@ def create_story(user_prompt: str) -> str:
                                           'content': """write a story 
                                           for children based on user prompt and 
                                           ensure that:
-                                          - word limit is 200 words;
+                                          - word limit is 100 words;
                                           - the wording is simple (use simple 
                                                                    words and 
                                                                    avoid using
