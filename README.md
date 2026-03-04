@@ -12,6 +12,7 @@ The project is based on the template “4.1 Orchestrating AI models to achieve a
 
 - Start from the project root folder "uol_fp"
 - Create a virtual environment with the command `python3 -m venv venv`
+- Activate the virtual environment with the command `source venv/bin/activate`
 - Install the requirements with the command `pip install -r requirements.txt`
 
 # Download models and other frameworks
