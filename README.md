@@ -7,8 +7,13 @@ Orchestrating AI models
 - Ollama library: download the framework with the command "curl -fsSL https://ollama.com/install.sh | sh"
 - Ollama models: download the models with the commands "ollama run gemma3:1b" (LLM) and "ollama run qwen2.5-coder:3b" (agent).
 
+
+# cache the tokenizer file locally.
+python -c "import tiktoken; tiktoken.get_encoding('cl100k_base')"
+
 # requirements
 - run the command "pip install -r requirements.txt"
 
 # others
 - sudo apt install ffmpeg
+

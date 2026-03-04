@@ -10,6 +10,10 @@ from django.conf import settings
 
 import ffmpeg
 
+#import tiktoken
+#tiktoken.get_encoding("cl100k_base")
+
+
 def index(request):
     return render(request, "storyApp/index.html")
 
