@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 # import libraries
-from smolagents import ToolCallingAgent, LiteLLMModel, TransformersModel, CodeAgent
+from smolagents import ToolCallingAgent, LiteLLMModel, TransformersModel, CodeAgent, PromptTemplates
 from .hf_asr_whisper import transcribe_speech
 from .ollama_story import create_story
 from .hf_tts_mms import create_audio
@@ -52,7 +52,8 @@ def generate(request):
         # model = TransformersModel(
         #     model_id="Qwen/Qwen2.5-Coder-3B"
         #     )
-           
+        
+        
         agent = ToolCallingAgent(
             tools=[transcribe_speech,create_story,create_audio],
             model=model,
@@ -62,7 +63,7 @@ def generate(request):
 
         prompt = """ Create an audio story for children based on the user prompt 
                      contained in the audio file stored at the following path: 
-                     ./media/prompt.wav"""
+                     ./media/prompt.wav."""
         
         agent.run(prompt)
         
