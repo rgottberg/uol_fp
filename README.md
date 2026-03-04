@@ -15,6 +15,18 @@ The project is based on the template “4.1 Orchestrating AI models to achieve a
 - Activate the virtual environment with the command `source venv/bin/activate`
 - Install the requirements with the command `pip install -r requirements.txt`
 
+This should install the python libraries below, along with their dependencies:
+
+- django 
+- ollama 
+- transformers 
+- smolagents 
+- 'smolagents[litellm]' 
+- ffmpeg 
+- torch 
+- torchaudio 
+- torchcodec
+
 # Download models and other frameworks
 
 - p5.js (v1.11.11 2025-10-20) and p5.sound.js (v1.0.1 - 2021-05-25): download the complete library from https://p5js.org/download/ and save the files p5.js and p5.sound.js in the folder "djangoProject/storyApp/static/storyApp/p5_library".
