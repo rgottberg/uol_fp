@@ -21,7 +21,7 @@ The project is based on the template “4.1 Orchestrating AI models to achieve a
 - HuggingFace models (ASR & TTS): run the python script "download_hf_models.py" and ensure the models are saved in the folders "djangoProject/hf_models/mms-tts-eng/" and "djangoProject/hf_models/whisper-medium". 
 - Ollama library: download the framework with the command `curl -fsSL https://ollama.com/install.sh | sh`
 - Ollama models: download the models with the commands `ollama run gemma3:1b` and `ollama run qwen2.5-coder:3b`.
-- ffmpeg: run the command `sudo apt install` 
+- ffmpeg: run the command `sudo apt install ffmpeg` 
 
 # Run the app (terminal)
 
