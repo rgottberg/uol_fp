@@ -45,7 +45,8 @@ def generate(request):
         model = LiteLLMModel(
             model_id="ollama_chat/qwen2.5-coder:3b",
             # model_id="ollama_chat/llama3.2:3b",
-            api_base="http://localhost:11434",
+            temperature=0.0,
+            api_base="http://localhost:11434"
             )
         
         # model = TransformersModel(
