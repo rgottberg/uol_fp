@@ -8,33 +8,54 @@ The project is based on the template “4.1 Orchestrating AI models to achieve a
 
 - `git clone https://github.com/rgottberg/uol_fp.git`
 
-# Install python requirements (terminal)
+
+# Hardware requirements
+- RAM 48 GB
+
+# Software requirements
+
+## General requirements
+- Ubuntu 24.04.4 LTS
+- Ollama
+- ffmpeg
+- p5.js
+- p5.sound.js
+
+## Python requirements 
+
+- Python 3.12.3
+- django 
+- ollama 
+- transformers 
+- smolagents 
+- 'smolagents[litellm]' 
+- ffmpeg-python 
+- torch 
+- torchaudio 
+- torchcodec
+
+# Installation 
+
+## General requirements (terminal)
+
+- Ollama: run the command `curl -fsSL https://ollama.com/install.sh | sh`
+- ffmpeg: run the command `sudo apt install ffmpeg`
+- p5.js (v1.11.11 2025-10-20) and p5.sound.js (v1.0.1 - 2021-05-25): download the complete library from https://p5js.org/download/ and save the files p5.js and p5.sound.js in the folder "djangoProject/storyApp/static/storyApp/p5_library".
+
+
+## python requirements (terminal)
 
 - Start from the project root folder "uol_fp"
 - Create a virtual environment with the command `python3 -m venv venv`
 - Activate the virtual environment with the command `source venv/bin/activate`
 - Install the requirements with the command `pip install -r requirements.txt`
 
-This should install the python libraries below, along with their dependencies:
+## Download AI models (terminal)
 
-- django 
-- ollama 
-- transformers 
-- smolagents 
-- 'smolagents[litellm]' 
-- ffmpeg 
-- torch 
-- torchaudio 
-- torchcodec
-
-# Download models and other frameworks
-
-- p5.js (v1.11.11 2025-10-20) and p5.sound.js (v1.0.1 - 2021-05-25): download the complete library from https://p5js.org/download/ and save the files p5.js and p5.sound.js in the folder "djangoProject/storyApp/static/storyApp/p5_library".
-- HuggingFace models (ASR & TTS): run the python script "download_hf_models.py" and ensure the models are saved in the folders "djangoProject/hf_models/mms-tts-eng/" and "djangoProject/hf_models/whisper-medium". 
-- Ollama library: download the framework with the command `curl -fsSL https://ollama.com/install.sh | sh`
-- Ollama models: download the models with the commands `ollama run gemma3:1b` and `ollama run qwen2.5-coder:3b`.
-- ffmpeg: run the command `sudo apt install ffmpeg` 
-
+- Start from the project root folder "uol_fp"
+- HuggingFace models (ASR & TTS): download the models with the command `python3 download_hf_models.py` and ensure the models are saved in the folders "djangoProject/hf_models/mms-tts-eng/" and "djangoProject/hf_models/whisper-medium". 
+- Ollama models: download the models with the commands `ollama run granite3.1-moe:1b` and `ollama run qwen2.5-coder:3b`.
+ 
 # Run the app (terminal)
 
 - Start from the project root folder "uol_fp"

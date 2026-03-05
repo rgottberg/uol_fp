@@ -9,9 +9,12 @@
 #checkpoints
 /djangoProject/hf_models
 
-#output
-/djangoProject/media
+#output (media files)
+/djangoProject/media/prompt.wav
+/djangoProject/media/prompt_raw.wav
+/djangoProject/media/story_audio.wav
 
 #p5 libraries
-/djangoProject/storyApp/static/storyApp/p5_library
+/djangoProject/storyApp/static/storyApp/p5_library/p5.js
+/djangoProject/storyApp/static/storyApp/p5_library/p5.sound.js
 
