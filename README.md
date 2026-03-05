@@ -4,10 +4,6 @@ This application was developed as the final project for the BSc in Computer Scie
 
 The project is based on the template “4.1 Orchestrating AI models to achieve a goal” and its aim is to build a system that generates and reads stories for children, based on user prompts. 
 
-# Clone the repository (terminal)
-
-- `git clone https://github.com/rgottberg/uol_fp.git`
-
 # System requirements
 
 - Processor: multi-core processor (Intel Core i3 or equivalent)
@@ -17,42 +13,40 @@ The project is based on the template “4.1 Orchestrating AI models to achieve a
 
 # Software requirements
 
-- Ollama
-- ffmpeg
-- p5.js
-- p5.sound.js
-
-- Python 3.12.3
-- django 
-- ollama 
+- python 3.12.3
+- ollama (framework and python wrapper)
 - transformers 
-- smolagents 
-- 'smolagents[litellm]' 
-- ffmpeg-python 
+- smolagents and 'smolagents[litellm]'
 - torch 
 - torchaudio 
 - torchcodec
+- ffmpeg (framework and python wrapper: ffmpeg-python)
+- django 
+- p5.js
+- p5.sound.js
 
-# Required software installation 
+# Installation 
 
 ## General
 
-- Ollama: from the terminal, run the command `curl -fsSL https://ollama.com/install.sh | sh`
+- Codebase: from the terminal, run the command `git clone https://github.com/rgottberg/uol_fp.git`
 - ffmpeg: from the terminal, run the command `sudo apt install ffmpeg`
-- p5.js (v1.11.11 2025-10-20) and p5.sound.js (v1.0.1 - 2021-05-25): download the complete library from https://p5js.org/download/ and save the files p5.js and p5.sound.js in the folder "djangoProject/storyApp/static/storyApp/p5_library".
+- p5.js (v1.11.11 2025-10-20) and p5.sound.js (v1.0.1 - 2021-05-25): download the complete library from https://p5js.org/download/ and save the "files p5.js" and "p5.sound.js" in the folder "djangoProject/storyApp/static/storyApp/p5_library"
 
-## Python (terminal)
+## Python requirements (terminal)
 
 - Start from the project root folder "uol_fp"
 - Create a virtual environment with the command `python3 -m venv venv`
 - Activate the virtual environment with the command `source venv/bin/activate`
 - Install the requirements with the command `pip install -r requirements.txt`
 
-## Download AI models (terminal)
+## AI models (terminal)
 
 - Start from the project root folder "uol_fp"
-- HuggingFace models (ASR & TTS): download the models with the command `python3 download_hf_models.py` and ensure the models are saved in the folders "djangoProject/hf_models/mms-tts-eng/" and "djangoProject/hf_models/whisper-medium". 
-- Ollama models: download the models with the commands `ollama run granite3.1-moe:1b` and `ollama run qwen2.5-coder:3b`.
+- Move to the Django folder with the command `cd djangoProject`
+- HuggingFace models (ASR & TTS): run the command `python3 download_hf_models.py` and ensure the models are saved in the folders "djangoProject/hf_models/mms-tts-eng/" and "djangoProject/hf_models/whisper-medium"
+- Ollama framework: run the command `curl -fsSL https://ollama.com/install.sh | sh`
+- Ollama models (LLM & agent brain): run the commands `ollama run granite3.1-moe:1b` and `ollama run qwen2.5-coder:3b`
  
 # Run the app (terminal)
 
