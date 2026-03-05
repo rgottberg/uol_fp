@@ -22,18 +22,22 @@ function setup(){
     canvas.parent(element);
     
     // HTML elements    
+    var btn_back = document.getElementById("btn_back");
     var btn_pause = document.getElementById("btn_pause");
     var btn_play = document.getElementById("btn_play");
     var btn_stop = document.getElementById("btn_stop");
+    var btn_forward = document.getElementById("btn_forward");
 
     // audio story
     preRecordedSound = loadSound(story);
 
     // event listeners
+    btn_back.addEventListener("click", () => {jumpBack(preRecordedSound)});
     btn_pause.addEventListener("click", () => {pauseSound(preRecordedSound)});
     btn_play.addEventListener("click", () => {playSound(preRecordedSound)});
     btn_stop.addEventListener("click", () => {stopSound(preRecordedSound)});
-    
+    btn_forward.addEventListener("click", () => {jumpForward(preRecordedSound)});
+
     // FFT analyzer
     fft = new p5.FFT(0.2,256);
         
@@ -59,6 +63,12 @@ function windowResized() {
     resizeCanvas(element.clientWidth, element.clientHeight);
 }
 
+// back
+function jumpBack(soundfile){
+  var timeJump = soundfile.currentTime()-5;
+  soundfile.jump(timeJump);
+}
+
 // pause
 function pauseSound(soundfile){
     if (soundfile.isPlaying()){
@@ -79,6 +89,13 @@ function stopSound(soundfile){
         soundfile.stop();
     } 
 }
+
+// forward
+function jumpForward(soundfile){
+  var timeJump = soundfile.currentTime()+5;
+  soundfile.jump(timeJump);
+}
+
 // FFT visualization
 function spectrum(soundfile,analyzer){
     //var spect = analyzer.analyze();
