@@ -36,7 +36,7 @@ function setup(){
 }
 // drawing
 function draw(){
-  // clear canvas to visualize spectrum
+  // clear canvas to visualize waveform
   noStroke();
   fill("#222222");
   rect(0,10,width,height);
@@ -46,7 +46,7 @@ function draw(){
     translate(0,height/2);
     noFill();
     stroke(0,255,0);
-    spectrum(preRecordedSound,fft);
+    waveform(preRecordedSound,fft);
     pop();
 }
 
@@ -93,16 +93,13 @@ function stopSound(soundfile){
 }
 
 // FFT visualization
-function spectrum(soundfile,analyzer){
-    //var spect = analyzer.analyze();
-    var spect = analyzer.waveform();
+function waveform(soundfile,analyzer){
+    var wave = analyzer.waveform();
     analyzer.setInput(soundfile)
     beginShape();
-    for (let i = 0; i < spect.length; i++) {
-        let x = map(i, 0, spect.length, 0, width);     
-        //let h = -height + map(spect[i], 0, 300, height, 0);
-        let h = map(spect[i], -1, 1, height, 0);
-        //rect(x, height/3, width/spect.length, h);
+    for (let i = 0; i < wave.length; i++) {
+        let x = map(i, 0, wave.length, 0, width);
+        let h = map(wave[i], -1, 1, height, 0);
         vertex(x, h - height/2);
         }
     endShape();
