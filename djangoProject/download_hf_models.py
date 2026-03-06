@@ -11,7 +11,6 @@ processor.save_pretrained(checkpoint_dir)
 model = WhisperForConditionalGeneration.from_pretrained(checkpoint)
 model.save_pretrained(checkpoint_dir)
 
-
 # feature 3
 checkpoint = "facebook/mms-tts-eng"
 checkpoint_dir = "./hf_models/mms-tts-eng/"
@@ -21,23 +20,3 @@ model.save_pretrained(checkpoint_dir)
 
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 tokenizer.save_pretrained(checkpoint_dir)
-
-
-# # feature 4
-# checkpoint = "Qwen/Qwen2.5-Coder-3B"
-# checkpoint_dir = "./hf_models/Qwen2.5-Coder-3B"
-
-# model = AutoModelForCausalLM.from_pretrained(checkpoint)
-# model.save_pretrained(checkpoint_dir)
-
-# tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-# tokenizer.save_pretrained(checkpoint_dir)
-
-
-
-
-
-
-
-
-
