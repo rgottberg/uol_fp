@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Dec 10 09:50:03 2025
-
-@author: cod
-"""
-
 # import libraries
 from smolagents import tool
 from ollama import chat
@@ -21,10 +13,9 @@ def create_story(user_prompt: str) -> str:
     Args:
         user_prompt: information provided by users to create a story.
     """
-    
-    # checkpoint = "gemma3:1b"
+    # checkpoint name
     checkpoint = "granite3.1-moe:1b"
-    
+    # inference
     response: ChatResponse = chat(model=checkpoint,
                                   messages=[
                                       {
@@ -50,6 +41,5 @@ def create_story(user_prompt: str) -> str:
                                           },
                                       ]
                                   )
-
-    story = response["message"]["content"]
-    return story
+    # return story text
+    return response["message"]["content"]

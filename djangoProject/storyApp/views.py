@@ -1,28 +1,26 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 
 # import libraries
-from smolagents import ToolCallingAgent, LiteLLMModel, TransformersModel, CodeAgent, PromptTemplates
+from smolagents import ToolCallingAgent, LiteLLMModel
 from .hf_asr_whisper import transcribe_speech
 from .ollama_story import create_story
 from .hf_tts_mms import create_audio
-from django.conf import settings
-
 import ffmpeg
 
-#import tiktoken
-#tiktoken.get_encoding("cl100k_base")
-
-
+# home
 def index(request):
     return render(request, "storyApp/index.html")
 
+# recorder
 def record(request):
     filename = "myPrompt.wav"
     path = settings.MEDIA_URL
     context = {"audio_file": path + filename}
     return render(request, "storyApp/record.html", context)
 
+# process audio received from frontend
 def blob(request):
     if request.method == 'POST':
         # handle uploaded file
@@ -30,7 +28,7 @@ def blob(request):
         with open("./media/prompt_raw.wav", "wb+") as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
-        # process audio
+        # convert to format required by ASR
         (
         ffmpeg
             .input('./media/prompt_raw.wav')
@@ -40,37 +38,32 @@ def blob(request):
         )
         return render(request, "storyApp/record.html")
 
+# AI orchestration
 def generate(request):
     if request.method == "POST":
+        # initialize model
         model = LiteLLMModel(
             model_id="ollama_chat/qwen2.5-coder:3b",
-            # model_id="ollama_chat/llama3.2:3b",
             temperature=0.0,
             api_base="http://localhost:11434"
             )
-        
-        # model = TransformersModel(
-        #     model_id="Qwen/Qwen2.5-Coder-3B"
-        #     )
-        
-        
+        # initialize agent
         agent = ToolCallingAgent(
             tools=[transcribe_speech,create_story,create_audio],
             model=model,
             max_steps=3
-            # max_steps=5
         )
-
+        # agent instructions
         prompt = """ Create an audio story for children based on the user prompt 
                      contained in the audio file stored at the following path: 
                      ./media/prompt.wav."""
-        
+        # inference
         agent.run(prompt)
-        
+        # return feedback to user
         context = {"feedback": "You can now play your story."}
-        
         return render(request, "storyApp/index.html", context)
-    
+
+# audio player
 def play(request):
     filename = "story_audio.wav"
     path = settings.MEDIA_URL

@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Dec 13 17:52:36 2025
-
-@author: cod
-"""
-
 # import libraries
 from smolagents import tool
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
@@ -22,23 +14,26 @@ def transcribe_speech(file_path: str) -> str:
     Args:
         file_path: path to the file containing the speech.
     """
+    # folder containing checkpoint
     checkpoint_dir = "./hf_models/whisper-medium/"
+    # load processor from local files
     processor = WhisperProcessor.from_pretrained(checkpoint_dir,
                                                  local_files_only=True)
+    # load model from local files
     model = WhisperForConditionalGeneration.from_pretrained(checkpoint_dir,
                                                             local_files_only=True)
-    
+    # configuration
     model.config.forced_decoder_ids = None
-    
+    # load audio file
     waveform, sample_rate = torchaudio.load(file_path)
-    
+    # preprocess audio
     input_features = processor(waveform.squeeze().numpy(), 
                                sampling_rate=16000, 
                                return_tensors="pt").input_features
-    
+    # inference
     with torch.no_grad():
         predicted_ids = model.generate(input_features)
         transcription = processor.batch_decode(predicted_ids, 
                                                skip_special_tokens=True)
-    
+    # return audio transcription
     return transcription[0]

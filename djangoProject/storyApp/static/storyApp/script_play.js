@@ -1,11 +1,3 @@
-//#!/usr/bin/env python3
-//# -*- coding: utf-8 -*-
-//"""
-//Created on Tue Jan 20 11:58:51 2026
-//
-//@author: cod
-//"
-
 // pre-recorded SoundFile object (audio story)
 var preRecordedSound;
 
@@ -22,6 +14,8 @@ function setup(){
     canvas.parent(element);
     
     // HTML elements    
+    var btn_restart = document.getElementById("btn_restart");
+    var btn_rewind = document.getElementById("btn_rewind");
     var btn_pause = document.getElementById("btn_pause");
     var btn_play = document.getElementById("btn_play");
     var btn_stop = document.getElementById("btn_stop");
@@ -30,17 +24,19 @@ function setup(){
     preRecordedSound = loadSound(story);
 
     // event listeners
+    btn_restart.addEventListener("click", () => {jumpStart(preRecordedSound)});
+    btn_rewind.addEventListener("click", () => {jumpBack(preRecordedSound)});
     btn_pause.addEventListener("click", () => {pauseSound(preRecordedSound)});
     btn_play.addEventListener("click", () => {playSound(preRecordedSound)});
     btn_stop.addEventListener("click", () => {stopSound(preRecordedSound)});
-    
+
     // FFT analyzer
     fft = new p5.FFT(0.2,256);
         
 }
 // drawing
 function draw(){
-  // clear canvas to visualize spectrum
+  // clear canvas to visualize waveform
   noStroke();
   fill("#222222");
   rect(0,10,width,height);
@@ -50,13 +46,29 @@ function draw(){
     translate(0,height/2);
     noFill();
     stroke(0,255,0);
-    spectrum(preRecordedSound,fft);
+    waveform(preRecordedSound,fft);
     pop();
 }
 
 // Resize the canvas when the browser's size changes.
 function windowResized() {
     resizeCanvas(element.clientWidth, element.clientHeight);
+}
+
+// start
+function jumpStart(soundfile){
+  soundfile.jump(0);
+}
+
+// back
+function jumpBack(soundfile){
+  var timeJump = soundfile.currentTime()-5;
+  if (timeJump > 0){
+    soundfile.jump(timeJump);
+  }
+  else{
+    soundfile.jump(0);
+  }
 }
 
 // pause
@@ -79,17 +91,15 @@ function stopSound(soundfile){
         soundfile.stop();
     } 
 }
+
 // FFT visualization
-function spectrum(soundfile,analyzer){
-    //var spect = analyzer.analyze();
-    var spect = analyzer.waveform();
+function waveform(soundfile,analyzer){
+    var wave = analyzer.waveform();
     analyzer.setInput(soundfile)
     beginShape();
-    for (let i = 0; i < spect.length; i++) {
-        let x = map(i, 0, spect.length, 0, width);     
-        //let h = -height + map(spect[i], 0, 300, height, 0);
-        let h = map(spect[i], -1, 1, height, 0);
-        //rect(x, height/3, width/spect.length, h);
+    for (let i = 0; i < wave.length; i++) {
+        let x = map(i, 0, wave.length, 0, width);
+        let h = map(wave[i], -1, 1, height, 0);
         vertex(x, h - height/2);
         }
     endShape();

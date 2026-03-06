@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Dec 12 22:13:34 2025
-
-@author: cod
-"""
-
 # import libraries
 from smolagents import tool
 from transformers import VitsModel, AutoTokenizer
@@ -26,22 +18,24 @@ def create_audio(story: str, file_path: str) -> str:
         story: text of the story to be converted into speech.
         file_path: path to the output audio file.
     """
+    # folder containing checkpoint
     checkpoint_dir = "./hf_models/mms-tts-eng/"
+    # load model from local files
     model = VitsModel.from_pretrained(checkpoint_dir,
                                       local_files_only=True)
+    # load tokenizer from local files
     tokenizer = AutoTokenizer.from_pretrained(checkpoint_dir,
                                               local_files_only=True)
-        
+    # tokenize text
     inputs = tokenizer(story, return_tensors="pt")
-    
+    # inference
     with torch.no_grad():
         output = model(**inputs).waveform
-
+    # save audio file
     filename = "story_audio.wav"
     file_path = Path(settings.MEDIA_ROOT)
-
     torchaudio.save(file_path / filename,
                     output.squeeze(0), 
                     model.config.sampling_rate)
-    
+    # return name of audio file
     return "story_audio.wav"

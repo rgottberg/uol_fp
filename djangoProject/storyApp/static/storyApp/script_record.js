@@ -1,10 +1,3 @@
-//#!/usr/bin/env python3
-//# -*- coding: utf-8 -*-
-//"""
-//Created on Tue Jan 20 11:58:51 2026
-//
-//@author: cod
-//"
 // array for playback buttons
 var buttons = [];
 
@@ -78,10 +71,8 @@ function recordSound(recorder,soundfile,button){
   }
 }
 
-const csrftoken = getCookie('csrftoken');
-
+// send blob to server
 function sendBlob(soundBlob) {
-    // Now we can send the blob to a server...
     var serverUrl = 'http://127.0.0.1:8000/blob/';
     
     var formData = new FormData();
@@ -94,6 +85,10 @@ function sendBlob(soundBlob) {
     };
     httpDo(serverUrl, httpRequestOptions);
 }
+
+// csrf token
+const csrftoken = getCookie('csrftoken');
+
 // Django's documentation: acquiring csrf token
 function getCookie(name) {
     let cookieValue = null;
