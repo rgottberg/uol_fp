@@ -49,11 +49,11 @@ nav,
     cursor: pointer;
 }
 /* playback buttons */
-#btn_back,
+#btn_restart,
+#btn_rewind,
 #btn_pause,
 #btn_play,
-#btn_stop,
-#btn_forward{
+#btn_stop{
     border: none;
     border-radius: 0.2em;
     font-size: 1em;
@@ -75,14 +75,14 @@ button{
     flex-grow: 1;
 }
 /* colors */
-#btn_back:hover,
+#btn_restart:hover,
+#btn_rewind:hover,
 #btn_create:hover,
 #btn_listen:hover,
 #btn_generate:hover,
 #btn_pause:hover,
 #btn_play:hover,
-#btn_stop:hover,
-#btn_forward:hover{
+#btn_stop:hover{
   background-color: grey;
   color: white;
 }
@@ -108,9 +108,9 @@ button > a{
 #btn_play{
     color: green;
 }
-#btn_back,
-#btn_stop,
-#btn_forward{
+#btn_restart,
+#btn_rewind,
+#btn_stop{
     color: #222222;
 }
 /* feedback */
