@@ -1,22 +1,26 @@
 # import libraries
-from transformers import WhisperProcessor, WhisperForConditionalGeneration, VitsModel, AutoTokenizer, AutoModelForCausalLM
+from transformers import WhisperForConditionalGeneration, WhisperProcessor, VitsModel, AutoTokenizer, AutoModelForCausalLM
 
 # feature 1
+## checkpoint name
 checkpoint = "openai/whisper-medium"
+## destination folder
 checkpoint_dir = "./hf_models/whisper-medium/"
-
+## initialize (& save copy in HF folder)
+model = WhisperForConditionalGeneration.from_pretrained(checkpoint)
 processor = WhisperProcessor.from_pretrained(checkpoint)
+## save copy in destination folder
+model.save_pretrained(checkpoint_dir)
 processor.save_pretrained(checkpoint_dir)
 
-model = WhisperForConditionalGeneration.from_pretrained(checkpoint)
-model.save_pretrained(checkpoint_dir)
-
 # feature 3
+## checkpoint name
 checkpoint = "facebook/mms-tts-eng"
+## destination folder
 checkpoint_dir = "./hf_models/mms-tts-eng/"
-
+## initialize (& save copy in HF folder)
 model = VitsModel.from_pretrained(checkpoint)
-model.save_pretrained(checkpoint_dir)
-
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+## save copy in destination folder
+model.save_pretrained(checkpoint_dir)
 tokenizer.save_pretrained(checkpoint_dir)
