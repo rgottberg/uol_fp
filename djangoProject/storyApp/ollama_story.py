@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Dec 10 09:50:03 2025
-
-@author: cod
-"""
-
 # import libraries
 from smolagents import tool
 from ollama import chat

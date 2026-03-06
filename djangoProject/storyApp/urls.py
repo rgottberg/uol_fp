@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jan 18 10:25:14 2026
-
-@author: cod
-"""
-
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static

@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 27 14:23:57 2026
-
-@author: cod
-"""
-
 # import libraries
 from transformers import WhisperProcessor, WhisperForConditionalGeneration, VitsModel, AutoTokenizer, AutoModelForCausalLM
 

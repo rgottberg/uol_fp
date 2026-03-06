@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Dec 12 22:13:34 2025
-
-@author: cod
-"""
-
 # import libraries
 from smolagents import tool
 from transformers import VitsModel, AutoTokenizer

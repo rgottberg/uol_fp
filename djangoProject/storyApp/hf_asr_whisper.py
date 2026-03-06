@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Dec 13 17:52:36 2025
-
-@author: cod
-"""
-
 # import libraries
 from smolagents import tool
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
