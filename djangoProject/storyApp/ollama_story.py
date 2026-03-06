@@ -14,7 +14,6 @@ def create_story(user_prompt: str) -> str:
         user_prompt: information provided by users to create a story.
     """
     
-    # checkpoint = "gemma3:1b"
     checkpoint = "granite3.1-moe:1b"
     
     response: ChatResponse = chat(model=checkpoint,

@@ -10,10 +10,6 @@ from django.conf import settings
 
 import ffmpeg
 
-#import tiktoken
-#tiktoken.get_encoding("cl100k_base")
-
-
 def index(request):
     return render(request, "storyApp/index.html")
 
@@ -44,21 +40,14 @@ def generate(request):
     if request.method == "POST":
         model = LiteLLMModel(
             model_id="ollama_chat/qwen2.5-coder:3b",
-            # model_id="ollama_chat/llama3.2:3b",
             temperature=0.0,
             api_base="http://localhost:11434"
             )
-        
-        # model = TransformersModel(
-        #     model_id="Qwen/Qwen2.5-Coder-3B"
-        #     )
-        
-        
+    
         agent = ToolCallingAgent(
             tools=[transcribe_speech,create_story,create_audio],
             model=model,
             max_steps=3
-            # max_steps=5
         )
 
         prompt = """ Create an audio story for children based on the user prompt 
