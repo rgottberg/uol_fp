@@ -13,9 +13,9 @@ def create_story(user_prompt: str) -> str:
     Args:
         user_prompt: information provided by users to create a story.
     """
-    
+    # checkpoint name
     checkpoint = "granite3.1-moe:1b"
-    
+    # inference
     response: ChatResponse = chat(model=checkpoint,
                                   messages=[
                                       {
@@ -41,6 +41,5 @@ def create_story(user_prompt: str) -> str:
                                           },
                                       ]
                                   )
-
-    story = response["message"]["content"]
-    return story
+    # return story text
+    return response["message"]["content"]
