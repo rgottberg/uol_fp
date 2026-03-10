@@ -39,7 +39,7 @@ def blob(request):
         return render(request, "storyApp/record.html")
 
 # AI orchestration
-def generate(request):
+def generate(request): 
     if request.method == "POST":
         # initialize model
         model = LiteLLMModel(
@@ -56,7 +56,7 @@ def generate(request):
         # agent instructions
         prompt = """ Create an audio story for children based on the user prompt 
                      contained in the audio file stored at the following path: 
-                     ./media/prompt.wav."""
+                     ./media/prompt.wav"""
         # inference
         agent.run(prompt)
         # return feedback to user
