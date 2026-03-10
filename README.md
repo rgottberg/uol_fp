@@ -1,8 +1,6 @@
 
 ![audio player](20260310_final_prototype_all_pages.png)
 
-# Introduction
-
 This application was developed as the final project for the BSc in Computer Science of the University of London (Goldsmiths). 
 
 The project is based on the template “4.1 Orchestrating AI models to achieve a goal” and its aim is to build a system that generates and reads stories for children, based on user prompts. 
