@@ -23,16 +23,19 @@ def transcribe_speech(file_path: str) -> str:
     model = WhisperForConditionalGeneration.from_pretrained(checkpoint_dir,
                                                             local_files_only=True)
     # configuration
-    model.config.forced_decoder_ids = None
+    model.generation_config.suppress_tokens = None
+    model.generation_config.begin_suppress_tokens = None
     # load audio file
     waveform, sample_rate = torchaudio.load(file_path)
     # preprocess audio
-    input_features = processor(waveform.squeeze().numpy(), 
-                               sampling_rate=16000, 
+    input_features = processor(waveform.squeeze().numpy(),
+                               sampling_rate=16000,
                                return_tensors="pt").input_features
     # inference
     with torch.no_grad():
-        predicted_ids = model.generate(input_features)
+        predicted_ids = model.generate(input_features,
+                                       language="english",
+                                       task="transcribe")
         transcription = processor.batch_decode(predicted_ids, 
                                                skip_special_tokens=True)
     # return audio transcription
