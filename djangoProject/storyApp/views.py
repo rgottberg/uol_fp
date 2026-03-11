@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 
 # import libraries
-from smolagents import ToolCallingAgent, LiteLLMModel
+from smolagents import LiteLLMModel, CodeAgent
 from .hf_asr_whisper import transcribe_speech
 from .ollama_story import create_story
 from .hf_tts_mms import create_audio
@@ -48,15 +48,16 @@ def generate(request):
             api_base="http://localhost:11434"
             )
         # initialize agent
-        agent = ToolCallingAgent(
+        agent = CodeAgent(
             tools=[transcribe_speech,create_story,create_audio],
             model=model,
             max_steps=3
         )
         # agent instructions
-        prompt = """ Create an audio story for children based on the user prompt 
-                     contained in the audio file stored at the following path: 
-                     ./media/prompt.wav"""
+        prompt = """ 
+        Create an audio story for children based on the user prompt contained 
+        in the audio file stored at the following path: ./media/prompt.wav 
+        """
         # inference
         agent.run(prompt)
         # return feedback to user
