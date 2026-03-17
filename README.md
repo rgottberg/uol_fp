@@ -47,7 +47,7 @@ The project is based on the template “4.1 Orchestrating AI models to achieve a
 - Move to the Django folder with the command `cd djangoProject`
 - HuggingFace models (ASR & TTS): run the command `python3 download_hf_models.py` and ensure the models are saved in the folders "djangoProject/hf_models/mms-tts-eng/" and "djangoProject/hf_models/whisper-medium"
 - Ollama framework: run the command `curl -fsSL https://ollama.com/install.sh | sh`
-- Ollama models (LLM & agent brain): run the commands `ollama run granite3.1-moe:1b` and `ollama run qwen2.5-coder:3b`
+- Ollama models (LLM & agent brain): run the commands `ollama run granite3.1-moe:1b` and `ollama run qwen2.5-coder:3b` (exit ollama terminal by pressing "ctrl" + "d")
  
 # Run the app (terminal)
 
