@@ -8,8 +8,8 @@ The project is based on the template “4.1 Orchestrating AI models to achieve a
 # System requirements
 
 - Processor: multi-core processor (Intel Core i3 or equivalent)
-- RAM: 32 GB
-- Storage: 20-30 GB free disk space
+- RAM: 8 GB Minimum, 16 GB Recommended
+- Storage: 30-35 GB free disk space
 - Operating system: Linux (Ubuntu 24.04+)
 
 # Software requirements
